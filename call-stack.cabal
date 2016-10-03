@@ -23,7 +23,7 @@ library
       src
   ghc-options: -Wall
   build-depends:
-      base == 4.*
+      base >= 4.5.0.0 && < 5
   exposed-modules:
       Data.CallStack
   other-modules:
@@ -38,7 +38,7 @@ test-suite spec
       test
   ghc-options: -Wall
   build-depends:
-      base == 4.*
+      base >= 4.5.0.0 && < 5
     , nanospec
     , call-stack
   other-modules:
