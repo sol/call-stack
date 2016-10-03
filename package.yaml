@@ -19,5 +19,5 @@ tests:
     source-dirs: test
     main: Spec.hs
     dependencies:
-      - hspec
+      - nanospec
       - call-stack
