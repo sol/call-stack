@@ -1,0 +1,23 @@
+name: call-stack
+version: 0.1.0
+synopsis: Use GHC call-stacks in a backward compatible way
+maintainer: Simon Hengel <sol@typeful.net>
+license: MIT
+github: sol/call-stack
+category: Data
+
+ghc-options: -Wall
+
+dependencies: base == 4.*
+
+library:
+  source-dirs: src
+  exposed-modules: Data.CallStack
+
+tests:
+  spec:
+    source-dirs: test
+    main: Spec.hs
+    dependencies:
+      - hspec
+      - call-stack
