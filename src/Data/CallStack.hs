@@ -2,12 +2,14 @@
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE KindSignatures #-}
 {-# LANGUAGE ImplicitParams #-}
+{-# LANGUAGE RankNTypes #-}
 
 module Data.CallStack (
   HasCallStack
 , CallStack
 , SrcLoc(..)
 , callStack
+, withFrozenCallStack
 ) where
 
 import Data.SrcLoc
@@ -35,3 +37,12 @@ callStack = drop 2 $ GHC.getCallStack ?callStack
 #else
 callStack = []
 #endif
+
+#if MIN_VERSION_base(4,9,0)
+withFrozenCallStack :: HasCallStack => (HasCallStack => a) -> a
+withFrozenCallStack = GHC.withFrozenCallStack
+#else
+withFrozenCallStack :: a -> a
+withFrozenCallStack = id
+#endif
+{-# INLINE withFrozenCallStack #-}
