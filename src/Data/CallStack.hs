@@ -8,8 +8,10 @@ module Data.CallStack (
 , CallStack
 , SrcLoc(..)
 , callStack
+, callSite
 ) where
 
+import Data.Maybe
 import Data.SrcLoc
 
 #if MIN_VERSION_base(4,8,1)
@@ -35,3 +37,6 @@ callStack = drop 2 $ GHC.getCallStack ?callStack
 #else
 callStack = []
 #endif
+
+callSite :: HasCallStack => Maybe (String, SrcLoc)
+callSite = listToMaybe (reverse callStack)
