@@ -1,5 +1,5 @@
 name: call-stack
-version: 0.1.0
+version: 0.2.0
 synopsis: Use GHC call-stacks in a backward compatible way
 maintainer: Simon Hengel <sol@typeful.net>
 license: MIT
