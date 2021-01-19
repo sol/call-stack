@@ -1,5 +1,11 @@
-{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE CPP, FlexibleContexts #-}
+
+#if __GLASGOW_HASKELL__ >= 704
 {-# LANGUAGE ConstraintKinds #-}
+#define HCS HasCallStack =>
+#else
+#define HCS
+#endif
 module Example where
 
 import           Data.CallStack
@@ -7,8 +13,8 @@ import           Data.CallStack
 test :: CallStack
 test = foo
 
-foo :: HasCallStack => CallStack
+foo :: HCS CallStack
 foo = bar
 
-bar :: HasCallStack => CallStack
+bar :: HCS CallStack
 bar = callStack
