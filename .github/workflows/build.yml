@@ -59,8 +59,9 @@ jobs:
         include:
           - os: macos-latest
             ghc: latest
-          - os: windows-latest
-            ghc: latest
+          # failing due to https://gitlab.haskell.org/ghc/ghc/-/issues/19236
+          # - os: windows-latest
+          #   ghc: latest
     steps:
       - uses: actions/checkout@v2
       - uses: haskell/actions/setup@v1
