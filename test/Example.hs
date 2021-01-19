@@ -2,10 +2,11 @@
 
 #if __GLASGOW_HASKELL__ >= 704
 {-# LANGUAGE ConstraintKinds #-}
-#define HCS HasCallStack =>
+#define HasCallStack_ HasCallStack =>
 #else
-#define HCS
+#define HasCallStack_
 #endif
+
 module Example where
 
 import           Data.CallStack
@@ -13,8 +14,8 @@ import           Data.CallStack
 test :: CallStack
 test = foo
 
-foo :: HCS CallStack
+foo :: HasCallStack_ CallStack
 foo = bar
 
-bar :: HCS CallStack
+bar :: HasCallStack_ CallStack
 bar = callStack
