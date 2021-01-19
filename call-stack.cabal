@@ -5,7 +5,7 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           call-stack
-version:        0.2.0
+version:        0.3.0
 synopsis:       Use GHC call-stacks in a backward compatible way
 category:       Data
 homepage:       https://github.com/sol/call-stack#readme
