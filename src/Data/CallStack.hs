@@ -4,9 +4,9 @@
 
 #if __GLASGOW_HASKELL__ >= 704
 {-# LANGUAGE ConstraintKinds #-}
-#define HCS HasCallStack =>
+#define HasCallStack_ HasCallStack =>
 #else
-#define HCS
+#define HasCallStack_
 #endif
 
 module Data.CallStack (
@@ -37,7 +37,7 @@ type HasCallStack = (() :: Constraint)
 
 type CallStack = [(String, SrcLoc)]
 
-callStack :: HCS CallStack
+callStack :: HasCallStack_ CallStack
 #if MIN_VERSION_base(4,9,0)
 callStack = drop 1 $ GHC.getCallStack GHC.callStack
 #elif MIN_VERSION_base(4,8,1)
@@ -46,5 +46,5 @@ callStack = drop 2 $ GHC.getCallStack ?callStack
 callStack = []
 #endif
 
-callSite :: HCS Maybe (String, SrcLoc)
+callSite :: HasCallStack_ Maybe (String, SrcLoc)
 callSite = listToMaybe (reverse callStack)
