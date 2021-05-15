@@ -1,5 +1,7 @@
 {-# LANGUAGE CPP #-}
-module Util (SrcLoc(..), mapLocations) where
+module Util (SrcLoc(..), mapLocations, (</>)) where
+
+import           System.FilePath
 
 #if MIN_VERSION_base(4,8,1) && !MIN_VERSION_base(4,9,0)
 import qualified GHC.SrcLoc as GHC
