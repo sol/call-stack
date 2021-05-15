@@ -15,7 +15,7 @@ spec = do
           , SrcLoc {
               srcLocPackage = "main"
             , srcLocModule = "Example"
-            , srcLocFile = "test/Example.hs"
+            , srcLocFile = "test" </> "Example.hs"
             , srcLocStartLine = 18
             , srcLocStartCol = 7
             , srcLocEndLine = 18
@@ -26,7 +26,7 @@ spec = do
           , SrcLoc {
               srcLocPackage = "main"
             , srcLocModule = "Example"
-            , srcLocFile = "test/Example.hs"
+            , srcLocFile = "test" </> "Example.hs"
             , srcLocStartLine = 15
             , srcLocStartCol = 8
             , srcLocEndLine = 15

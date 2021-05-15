@@ -56,15 +56,16 @@ jobs:
           - 8.10.1
           - 8.10.2
           - 8.10.3
+          - 8.10.4
+          - 9.0.1
         include:
           - os: macos-latest
             ghc: latest
-          # failing due to https://gitlab.haskell.org/ghc/ghc/-/issues/19236
-          # - os: windows-latest
-          #   ghc: latest
+          - os: windows-latest
+            ghc: latest
     steps:
       - uses: actions/checkout@v2
-      - uses: haskell/actions/setup@v1
+      - uses: haskell/actions/setup@08fca952ff0302e4ff725a413e48733e4c9b4127
         with:
           ghc-version: ${{ matrix.ghc }}
       - uses: sol/run-haskell-tests@v1
