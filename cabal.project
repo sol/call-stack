@@ -1,5 +1,0 @@
-packages:
-  call-stack.cabal
-
-package call-stack
-  ghc-options: -Werror
