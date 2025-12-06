@@ -2,7 +2,7 @@
 {-# LANGUAGE KindSignatures #-}
 {-# LANGUAGE ImplicitParams #-}
 
-#if __GLASGOW_HASKELL__ >= 704
+#if __GLASGOW_HASKELL__ >= 704 || defined(__MHS__)
 {-# LANGUAGE ConstraintKinds #-}
 #define HasCallStack_ HasCallStack =>
 #else
@@ -10,7 +10,7 @@
 #endif
 
 module Data.CallStack (
-#if __GLASGOW_HASKELL__ >= 704
+#if __GLASGOW_HASKELL__ >= 704 || defined(__MHS__)
   HasCallStack,
 #endif
   CallStack
