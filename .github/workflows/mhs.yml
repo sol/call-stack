@@ -1,0 +1,27 @@
+name: MicroHs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: checkout mhs repo
+      uses: actions/checkout@v4
+      with:
+        repository: augustss/MicroHs
+        path: mhs
+    - name: make and install mhs
+      run: |
+        cd mhs
+        make minstall
+        echo "$HOME/.mcabal/bin" >> "$GITHUB_PATH"
+    - run: mcabal install ghc-compat
+    - run: mcabal install filepath
