@@ -5,11 +5,14 @@ import           Test.Hspec
 import           Util
 import           Example
 
+normalizePackageName :: SrcLoc -> SrcLoc
+normalizePackageName loc = loc { srcLocPackage = "main" }
+
 spec :: Spec
 spec = do
   describe "callStack" $ do
     it "returns the call stack" $ do
-      mapLocations test `shouldBe` [
+      map (fmap normalizePackageName) (mapLocations test) `shouldBe` [
 #if MIN_VERSION_base(4,8,1)
           ("bar"
           , SrcLoc {
