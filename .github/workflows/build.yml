@@ -1,5 +1,9 @@
 name: build
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
@@ -17,23 +21,8 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-16.04 # https://launchpad.net/~hvr/+archive/ubuntu/ghc?field.series_filter=xenial
+          - ubuntu-22.04
         ghc:
-          - 7.0.1
-          - 7.0.2
-          - 7.0.3
-          - 7.0.4
-          - 7.2.1
-          - 7.2.2
-          - 7.4.1
-          - 7.4.2
-          - 7.6.1
-          - 7.6.2
-          - 7.6.3
-          - 7.8.1
-          - 7.8.2
-          - 7.8.3
-          - 7.8.4
           - 7.10.1
           - 7.10.2
           - 7.10.3
