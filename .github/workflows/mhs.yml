@@ -24,4 +24,5 @@ jobs:
         make minstall
         echo "$HOME/.mcabal/bin" >> "$GITHUB_PATH"
     - run: mcabal install ghc-compat
-    - run: mcabal install filepath
+    - run: mcabal install --git=http://github.com/augustss/filepath.git filepath
+    - run: mcabal install
